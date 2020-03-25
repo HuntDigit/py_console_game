@@ -19,14 +19,14 @@ def render():
         v2 = offset2
         lineUp = "=" * v1 + " " * 2 + "=" * v2
         lineDown = " "
-        for i in range(0, 24):
+        for i in range(0, 23):
             print("\033[{0};0H".format(str(i)) + lineUp)
         frame_pear_second = frame_pear_second + 1
         time.sleep(0.015)
         after_time = datetime.now()
 
         if datetime.timestamp(after_time) - datetime.timestamp(before_time) >= 1.0:
-            print("\033[25;2H{0} Press any key to stop programm".format(str(frame_pear_second)) + lineDown)
+            print("\033[24;2H{0} Press any key to stop programm".format(str(frame_pear_second)) + lineDown)
             frame_pear_second = 0
             before_time = datetime.now()
 

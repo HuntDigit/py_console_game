@@ -3,8 +3,12 @@ import time
 import threading
 
 from datetime import datetime
-offset1 = 39
-offset2 = 39
+
+width = 270 #80
+height = 72 #24
+
+offset1 = int(width // 2) - 1
+offset2 = int(width // 2) - 1
 
 move_value = 1
 
@@ -19,14 +23,14 @@ def render():
         v2 = offset2
         lineUp = "=" * v1 + " " * 2 + "=" * v2
         lineDown = " "
-        for i in range(0, 23):
+        for i in range(0, height - 1):
             print("\033[{0};0H".format(str(i)) + lineUp)
         frame_pear_second = frame_pear_second + 1
         time.sleep(0.015)
         after_time = datetime.now()
 
         if datetime.timestamp(after_time) - datetime.timestamp(before_time) >= 1.0:
-            print("\033[24;2H{0} Press any key to stop programm".format(str(frame_pear_second)) + lineDown)
+            print("\033[{0};2H{1} Press any key to stop programm".format(str(height), str(frame_pear_second)) + lineDown)
             frame_pear_second = 0
             before_time = datetime.now()
 
